@@ -3,8 +3,8 @@ import { Box, Button, InputLabel, TextField, Typography } from '@mui/material';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const getBlogUrl = 'http://localhost:5000/api/blog/';
-const editBlogUrl = 'http://localhost:5000/api/blog/update/';
+const getBlogUrl = `${process.env.REACT_APP_BACKEND_LINK}/api/blog/`;
+const editBlogUrl = `${process.env.REACT_APP_BACKEND_LINK}/api/blog/update/`;
 
 
 const labelStypes = {mb:1,mt:2, fontSize:'24px', fontWeight:"bold"}

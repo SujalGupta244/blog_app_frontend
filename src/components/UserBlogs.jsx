@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import Blog from './Blog';
 
-const userBlogUrl = 'http://localhost:5000/api/blog/user/';
+const userBlogUrl = `${process.env.REACT_APP_BACKEND_LINK}/api/blog/user/`;
 
 const UserBlogs = () => {
   const [user,setUser] = useState([]);

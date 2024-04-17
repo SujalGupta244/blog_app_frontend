@@ -3,7 +3,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-const url = "http://localhost:5000/api/blog/add";
+const url = `${process.env.REACT_APP_BACKEND_LINK}/api/blog/add`;
 
 const labelStypes = {mb:1,mt:2, fontSize:'24px', fontWeight:"bold"}
 
