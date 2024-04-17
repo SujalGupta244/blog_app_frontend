@@ -6,7 +6,7 @@ import { authActions } from '../store';
 import { useNavigate } from 'react-router-dom';
 
 
-const Url = "http://localhost:5000/api/user/"
+const Url = `${process.env.REACT_APP_BACKEND_LINK}/api/user/`
 
 // fipoli2602@kixotic.com
 // 12345678
