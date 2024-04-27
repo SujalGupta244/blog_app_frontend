@@ -7,7 +7,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
-const deleteBlogURL = 'http://localhost:5000/api/blog/';
+const deleteBlogURL = 'http://localhost:4000/api/blog/';
 
 const Blog = (props) => {
     const navigate = useNavigate();

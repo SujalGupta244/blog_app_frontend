@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Blog from './Blog';
-import { Box, Tab, Tabs } from '@mui/material';
+import { Box, Tab, Tabs, Typography } from '@mui/material';
 import { Tags } from './Tags';
+import { useSelector } from 'react-redux';
 
 // const url = "http://localhost:5000/api/user/refresh";
-const blogsUrl = 'http://localhost:5000/api/blog';
+const blogsUrl = 'http://localhost:4000/api/blog';
 
 
 const Blogs = () => {
   const [blogs,setBlogs] = useState([]);
   const [tagBlogs,setTagBlogs] = useState([]);
   const [tags,setTags] = useState([]);
+  const isLoggedIn = useSelector(state => state.isLoggedIn)
 
   const sendRequest = async() =>{
     const res = await axios.get(blogsUrl)
     .catch(err => console.log(err))
-    const data = await res.data;
+    const data = await res?.data;
     return data;
   }
   
@@ -44,17 +46,27 @@ const Blogs = () => {
 
 
   return (
-    <>
+    <>{
+      !isLoggedIn ?
+      <Box display="flex" alignItems='center' justifyContent="center" height='90vh'>
+        <Typography  variant="h3" sx={{textAlign:'center'}}>
+          You need to signup/login first
+          <br />
+          to see the content
+        </Typography>
+      </Box>
+      :
       <div className='blogs'>
         <Tags tags={tags} showTagBlogs={showTagBlogs}/>
         {tagBlogs && 
           tagBlogs.map((blog,index)=>{
             
-          return <Blog isUser={localStorage.getItem('userId') === blog.user._id}
-          {...blog} key={index}/>
-        })
+            return <Blog isUser={localStorage.getItem('userId') === blog.user._id}
+            {...blog} key={index}/>
+          })
       }
       </div>
+      }
     </>
   )
 }

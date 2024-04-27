@@ -22,17 +22,19 @@ const Header = () => {
   return (
     <AppBar position="sticky" sx={{background:"rgb(29,139,253)"}}>
         <Toolbar>
-            <Typography variant="h4">WebBlogs</Typography>
+            <Link to="/" style={{color:'white', textDecoration:'none'}}>
+              <Typography variant="h4">WebBlogs</Typography>
+            </Link>
             <Box display="flex" margin="auto">
               <Tabs textColor="inherit" value={value} onChange={(e,ind)=>setValue(ind)}>
+              {isLoggedIn &&
+              <>
                 <Tab LinkComponent={Link} to="/" label="All Blogs"/>
-              {isLoggedIn && 
-              // {/* they need to stay even after the referesh i think by using redux */}
+               {/* they need to stay even after the referesh i think by using redux */}
                 <Tab LinkComponent={Link} to="/myblogs" label="My Blogs"/>  
-              }
-              {isLoggedIn && 
-              // {/* they need to stay even after the referesh using redux */}
+               {/* they need to stay even after the referesh using redux */}
                 <Tab LinkComponent={Link} to="/blogs/add" label="Add Blogs"/> 
+              </>
               }
               </Tabs>
             </Box>
