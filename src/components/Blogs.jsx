@@ -6,7 +6,7 @@ import { Tags } from './Tags';
 import { useSelector } from 'react-redux';
 
 // const url = "http://localhost:5000/api/user/refresh";
-const blogsUrl = 'http://localhost:4000/api/blog';
+const blogsUrl = `${process.env.REACT_APP_BACKEND_LINK}/api/blog`;
 
 
 const Blogs = () => {

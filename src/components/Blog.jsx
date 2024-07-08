@@ -7,7 +7,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
-const deleteBlogURL = 'http://localhost:4000/api/blog/';
+const deleteBlogURL = `${process.env.REACT_APP_BACKEND_LINK}/api/blog`;
 
 const Blog = (props) => {
     const navigate = useNavigate();
@@ -15,7 +15,7 @@ const Blog = (props) => {
     const {_id,title,description,image,tag,user, isUser} = props;
 
     const deleteRequest = async() =>{ 
-        const res = await axios.delete(`${deleteBlogURL}${_id}`)
+        const res = await axios.delete(`${deleteBlogURL}/${_id}`)
         .catch(err => console.log(err))
         const data = await res.data;
         return data;
@@ -52,7 +52,7 @@ const Blog = (props) => {
         component="img"
         height="400"
         image={image}
-        alt="Paella dish"
+        alt={title}
       />
       <br />
       <hr />

@@ -17,6 +17,7 @@ const AddBlog = () => {
   })
  
   const sendRequest = async() =>{
+    console.log(inputs)
     const res = await axios.post(url,{
       title: inputs.title,
       description: inputs.description,
@@ -41,13 +42,13 @@ const AddBlog = () => {
   const handleSubmit = (e) =>{
     e.preventDefault();
     sendRequest()
-    .then(() => navigate("/myBlogs"))
+    // .then(() => navigate("/myBlogs"))
   }
 
   return (
     <div className='AddBlog'>
       <form onSubmit={handleSubmit}>
-        <Box border={3} borderColor="rgba(9,9,121,1)" borderRadius={10} boxShadow="10px 10px 20px #ccc" padding={3} margin={"auto"}
+        <Box border={3} borderColor="rgba(9,9,121,1)" borderRadius={10} boxShadow="10px 10px 20px #ccc" padding={3} margin={"auto"} marginBottom={14}
         marginTop={3} display="flex" flexDirection={'column'} width="80%">
           <Typography fontWeight={'bold'} padding={3} color="grey" variant="h2" textAlign="center">Post Your Blog</Typography>
           <InputLabel sx={labelStypes}>Title</InputLabel>
